@@ -1,0 +1,141 @@
+﻿<Page x:Class="ApplicationGloves.MaterialPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ApplicationGloves"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1200"
+      Title="MaterialPage" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <BitmapImage x:Key="Image1" UriSource="Resources/picture.png"></BitmapImage>
+    </Page.Resources>
+    
+
+    <Grid Name="BottomGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        
+        <ListView Grid.Row="1" Name="LVMaterial" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="LVMaterial_MouseDoubleClick">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center" Orientation="Vertical"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="2">
+                        <Grid Width="1800" Background="White" Name="Grid1" ToolTip="{Binding Cost}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="140" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+                            <Image Source="{Binding Image, FallbackValue={StaticResource Image1}, TargetNullValue={StaticResource Image1}}" Margin="5" Grid.RowSpan="3" Height="auto"></Image>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Margin="10">
+                                <Run Text="{Binding Path= MaterialType.Title}" />
+                                <Run Text="|" />
+                                <Run Text="{Binding Title}" />
+                            </TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding MinCount, StringFormat= Минимальное количество: 0 шт}" Margin="10"></TextBlock>
+                            <TextBlock Grid.Column="2" Margin="5" Text="{Binding CountInStock, StringFormat= Остаток: 0 шт}" Grid.Row="1"/>
+
+                            <TextBlock Text="Поставщики: " Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" FontSize="14"></TextBlock>
+                            <ListView Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Suppliers}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="100 0 0 0" VerticalAlignment="Center">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left"></WrapPanel>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <ItemContainerTemplate>
+                                        <Border BorderBrush="DarkGray" BorderThickness="2">
+                                            <Grid>
+                                                <TextBox Text="{Binding Title}" Background="White"></TextBox>
+                                            </Grid>
+                                        </Border>
+                                    </ItemContainerTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Grid.Row="0">
+            <TextBox Width="300" Height="35" HorizontalAlignment="Left" ToolTip="Поиск по наименованию" Name="textname" TextChanged="textname_TextChanged" Margin="5">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Введите для поиска" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+
+            <ComboBox Width="320" Height="35" Name="SortTitle" Foreground="Black" Margin="320,10,10,10" HorizontalAlignment="Left" SelectionChanged="SortTitle_SelectionChanged">
+                <ComboBoxItem>Нет сотрировки</ComboBoxItem>
+                <ComboBoxItem>Наименование (По возрастанию)</ComboBoxItem>
+                <ComboBoxItem>Наименование (По убыванию)</ComboBoxItem>
+                <ComboBoxItem>Остаток на складе (По возрастанию)</ComboBoxItem>
+                <ComboBoxItem>Остаток на складе (По убыванию)</ComboBoxItem>
+                <ComboBoxItem>Стоимость (По возрастанию)</ComboBoxItem>
+                <ComboBoxItem>Стоимость (По убыванию)</ComboBoxItem>
+            </ComboBox>
+
+            <ComboBox Width="250" Height="35" Name="CBFiltr" HorizontalAlignment="Left" Margin="660,10,10,10" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem>Все типы</ComboBoxItem>
+                <ComboBoxItem>Резина</ComboBoxItem>
+                <ComboBoxItem>Силикон</ComboBoxItem>
+                <ComboBoxItem>Краска</ComboBoxItem>
+            </ComboBox>
+
+            <Label Width="100" Height="30" Content="Сортировки:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="320 0 0 0"></Label>
+            <Label Width="195" Height="30" Content="Фильтрация материалов:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="660 0 0 0"></Label>
+            <TextBlock Visibility="Hidden" Name="ii" Text="{Binding ID}"></TextBlock>
+            <TextBlock Name="Col" HorizontalAlignment="Left" Width="330" Height="20" VerticalAlignment="Bottom"></TextBlock>
+        </Grid>
+
+        <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10 0 0" Name="WrapPanelBottom">
+            <Button Content="В начало" Width="100" Name="NachaloPageClick" Click="NachaloPageClick_Click" ToolTip="В начало"></Button>
+            <Button Content="&lt;" Width="60" Name="LastPageClick" Click="LastPageClick_Click" ToolTip="Назад"></Button>
+            <Button Content="&gt;" Width="60" Name="NextPageClick" Click="NextPageClick_Click" ToolTip="Вперед"></Button>
+            <Button Content="В конец" Width="100" x:Name="EndPageClick" Click="EndPageClick_Click" ToolTip="В конец"/>
+        </WrapPanel>
+
+        <Button Content="Добавить материал" ToolTip="Добавить" Name="BtnAdd" Click="BtnAdd_Click" Grid.Row="2" HorizontalAlignment="Left" Width="300" Margin="5"></Button>
+
+        <Menu HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0">
+            <MenuItem Header="Cхема">
+                <MenuItem Header="Темная схема" Name="BlackTem" Click="BlackTem_Click"></MenuItem>
+                <MenuItem Header="Оригинальная схема" Name="OriginTem" Click="OriginTem_Click"></MenuItem>
+                <MenuItem Header="Сохранить" Name="MenuSave" Click="MenuSave_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Page>

@@ -1,0 +1,67 @@
+﻿<Page x:Class="ApplicationGloves.MaterialEdit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ApplicationGloves"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1000"
+      Title="MaterialEdit">
+
+    <Page.Resources>
+        <BitmapImage x:Key="Image1" UriSource="Resources/picture.png"></BitmapImage>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="12*" />
+            <RowDefinition Height="12*" />
+            <RowDefinition Height="12*" />
+            <RowDefinition Height="12*" />
+            <RowDefinition Height="12*" />
+            <RowDefinition Height="12*" />
+            <RowDefinition Height="12*" />
+            <RowDefinition Height="40*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="30*" />
+            <RowDefinition Height="12*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Name="ii" Visibility="Hidden" Text="{Binding ID}"></TextBlock>
+        <TextBlock Text="Наименование материала:" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Text="Тип материала:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"></TextBlock>
+        <TextBlock Text="Количество на складе:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"></TextBlock>
+        <TextBlock Text="Единица измерения:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3"></TextBlock>
+        <TextBlock Text="Количество в упаковке:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4"></TextBlock>
+        <TextBlock Text="Миимальное количество:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5"></TextBlock>
+        <TextBlock Text="Стоимость за единицу:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6"></TextBlock>
+        <TextBlock Text="Изображение:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="7"></TextBlock>
+        <TextBlock Text="Подробное описание:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="9"></TextBlock>
+        <TextBlock Text="Выбрать поставщика:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="8"></TextBlock>
+
+        <TextBox Name="TBName" Text="{Binding Title}" Grid.Column="1" Height="24" Margin="5"></TextBox>
+        <ComboBox SelectedItem="{Binding Path= MaterialType}" DisplayMemberPath="Title" x:Name="CBProducts" Grid.Column="1" Grid.Row="1" Height="24" Margin="5"></ComboBox>
+        <TextBox Name="TBStock" Text="{Binding CountInStock}" Grid.Column="1" Grid.Row="2" Height="24" Margin="5"></TextBox>
+        <TextBox Name="TBUnit" Text="{Binding Unit}" Grid.Column="1" Grid.Row="3" Height="24" Margin="5"></TextBox>
+        <TextBox Name="TBPack" Text="{Binding CountInPack}" Grid.Column="1" Grid.Row="4" Height="24" Margin="5"></TextBox>
+        <TextBox Name="TBCount" Text="{Binding MinCount}" Grid.Column="1" Grid.Row="5" Height="24" Margin="5"></TextBox>
+        <TextBox Name="TBCost" Text="{Binding Cost}" Grid.Column="1" Grid.Row="6" Height="24" Margin="5"></TextBox>
+        
+        <TextBox Text="{Binding Image}" Grid.Column="1" Name="TBAdd" Grid.Row="7" Height="24" Width="1" HorizontalAlignment="Left" Margin="5" Opacity="0"></TextBox>
+        <Button ToolTip="Добавить" Content="Добавить" Name="BtnAdd" Click="BtnAdd_Click" Width="150" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Left" Margin="5" Height="40" BorderThickness="1"></Button>
+        
+        <Border Grid.Row="7" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Width="400" Margin="10" HorizontalAlignment="Right">
+            <Image Source="{Binding Image, FallbackValue={StaticResource Image1}}" Name="ImageSource" HorizontalAlignment="Right" Width="390" Margin="5" Grid.Column="1" Grid.Row="7"></Image>
+        </Border>
+        
+        <TextBox Text="{Binding Description}" Grid.Column="1" Grid.Row="9" Height="70" HorizontalAlignment="Left" Width="650" AcceptsReturn="True" Margin="5"></TextBox>
+        <ComboBox Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" x:Name="ComboSupplier" SelectedItem="{Binding Path= Supplier}" Height="25" DisplayMemberPath="Title"></ComboBox>
+        
+        <Button Content="Сохранить" Name="BtnSave" ToolTip="Сохранить" Click="BtnSave_Click" Width="300" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></Button>
+        <Button Content="Удалить" Name="BtnDelete" ToolTip="Удалить" Click="BtnDelete_Click" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Left" ></Button>
+    </Grid>
+</Page>
