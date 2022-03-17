@@ -1,0 +1,840 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище BD_SecuritesModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountPlan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="100" />
+          <Property Name="AccountType" Type="int" />
+          <Property Name="AccountVerify" Type="int" />
+          <Property Name="Number" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Agreement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Agreement" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Calculation" Type="int" />
+          <Property Name="Payment" Type="money" />
+        </EntityType>
+        <EntityType Name="Deal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgrementID" Type="int" />
+          <Property Name="DealTypeID" Type="int" />
+          <Property Name="DealKindID" Type="int" />
+          <Property Name="DealPlaceID" Type="int" />
+          <Property Name="CalculationID" Type="int" />
+          <Property Name="PaymentID" Type="int" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="TikerID" Type="int" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="Constractor" Type="nvarchar" MaxLength="100" />
+          <Property Name="Number" Type="nvarchar" MaxLength="10" />
+          <Property Name="DealDate" Type="date" />
+          <Property Name="Quanity" Type="int" />
+          <Property Name="Price" Type="money" />
+          <Property Name="TotalCost" Type="money" />
+          <Property Name="Trader" Type="nvarchar" MaxLength="50" />
+          <Property Name="CommisionExchange" Type="money" />
+          <Property Name="Note" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DealKind">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DealKind" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DealPlace">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DealPlace" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="DealType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DealType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Employee" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Operation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DealID" Type="int" />
+          <Property Name="SubAccountID" Type="int" />
+          <Property Name="Number" Type="nvarchar" MaxLength="10" />
+          <Property Name="OperationDate" Type="date" />
+          <Property Name="OperationType" Type="int" />
+          <Property Name="OperationSum" Type="int" />
+          <Property Name="SaldoInput" Type="int" />
+          <Property Name="SaldoOutput" Type="int" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Order" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubAccount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountPlanID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Number" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tiker">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tiker" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Deal_Agreement">
+          <End Role="Agreement" Type="Self.Agreement" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agreement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="AgrementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="CalculationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_Currency1">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="PaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_DealKind">
+          <End Role="DealKind" Type="Self.DealKind" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DealKind">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="DealKindID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_DealPlace">
+          <End Role="DealPlace" Type="Self.DealPlace" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DealPlace">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="DealPlaceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_DealType">
+          <End Role="DealType" Type="Self.DealType" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DealType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="DealTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_Tiker">
+          <End Role="Tiker" Type="Self.Tiker" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tiker">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="TikerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operation_SubAccount">
+          <End Role="SubAccount" Type="Self.SubAccount" Multiplicity="0..1" />
+          <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubAccount">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Operation">
+              <PropertyRef Name="SubAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubAccount_AccountPlan">
+          <End Role="AccountPlan" Type="Self.AccountPlan" Multiplicity="0..1" />
+          <End Role="SubAccount" Type="Self.SubAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountPlan">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubAccount">
+              <PropertyRef Name="AccountPlanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище BD_SecuritesModelContainer">
+          <EntitySet Name="AccountPlan" EntityType="Self.AccountPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Agreement" EntityType="Self.Agreement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deal" EntityType="Self.Deal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DealKind" EntityType="Self.DealKind" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DealPlace" EntityType="Self.DealPlace" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DealType" EntityType="Self.DealType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operation" EntityType="Self.Operation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubAccount" EntityType="Self.SubAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tiker" EntityType="Self.Tiker" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Deal_Agreement" Association="Self.FK_Deal_Agreement">
+            <End Role="Agreement" EntitySet="Agreement" />
+            <End Role="Deal" EntitySet="Deal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_Currency" Association="Self.FK_Deal_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Deal" EntitySet="Deal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_Currency1" Association="Self.FK_Deal_Currency1">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Deal" EntitySet="Deal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_DealKind" Association="Self.FK_Deal_DealKind">
+            <End Role="DealKind" EntitySet="DealKind" />
+            <End Role="Deal" EntitySet="Deal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_DealPlace" Association="Self.FK_Deal_DealPlace">
+            <End Role="DealPlace" EntitySet="DealPlace" />
+            <End Role="Deal" EntitySet="Deal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_DealType" Association="Self.FK_Deal_DealType">
+            <End Role="DealType" EntitySet="DealType" />
+            <End Role="Deal" EntitySet="Deal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_Employee" Association="Self.FK_Deal_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Deal" EntitySet="Deal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_Order" Association="Self.FK_Deal_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Deal" EntitySet="Deal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_Tiker" Association="Self.FK_Deal_Tiker">
+            <End Role="Tiker" EntitySet="Tiker" />
+            <End Role="Deal" EntitySet="Deal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operation_SubAccount" Association="Self.FK_Operation_SubAccount">
+            <End Role="SubAccount" EntitySet="SubAccount" />
+            <End Role="Operation" EntitySet="Operation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubAccount_AccountPlan" Association="Self.FK_SubAccount_AccountPlan">
+            <End Role="AccountPlan" EntitySet="AccountPlan" />
+            <End Role="SubAccount" EntitySet="SubAccount" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_SecuritesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccountPlan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AccountType" Type="Int32" />
+          <Property Name="AccountVerify" Type="Int32" />
+          <Property Name="Number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SubAccounts" Relationship="Self.FK_SubAccount_AccountPlan" FromRole="AccountPlan" ToRole="SubAccount" />
+        </EntityType>
+        <EntityType Name="Agreement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Agreement1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Deals" Relationship="Self.FK_Deal_Agreement" FromRole="Agreement" ToRole="Deal" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Calculation" Type="Int32" />
+          <Property Name="Payment" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Deals" Relationship="Self.FK_Deal_Currency" FromRole="Currency" ToRole="Deal" />
+          <NavigationProperty Name="Deals1" Relationship="Self.FK_Deal_Currency1" FromRole="Currency" ToRole="Deal" />
+        </EntityType>
+        <EntityType Name="Deal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgrementID" Type="Int32" />
+          <Property Name="DealTypeID" Type="Int32" />
+          <Property Name="DealKindID" Type="Int32" />
+          <Property Name="DealPlaceID" Type="Int32" />
+          <Property Name="CalculationID" Type="Int32" />
+          <Property Name="PaymentID" Type="Int32" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="TikerID" Type="Int32" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="Constractor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DealDate" Type="DateTime" Precision="0" />
+          <Property Name="Quanity" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalCost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Trader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CommisionExchange" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Agreement" Relationship="Self.FK_Deal_Agreement" FromRole="Deal" ToRole="Agreement" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK_Deal_Currency" FromRole="Deal" ToRole="Currency" />
+          <NavigationProperty Name="Currency1" Relationship="Self.FK_Deal_Currency1" FromRole="Deal" ToRole="Currency" />
+          <NavigationProperty Name="DealKind" Relationship="Self.FK_Deal_DealKind" FromRole="Deal" ToRole="DealKind" />
+          <NavigationProperty Name="DealPlace" Relationship="Self.FK_Deal_DealPlace" FromRole="Deal" ToRole="DealPlace" />
+          <NavigationProperty Name="DealType" Relationship="Self.FK_Deal_DealType" FromRole="Deal" ToRole="DealType" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Deal_Employee" FromRole="Deal" ToRole="Employee" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Deal_Order" FromRole="Deal" ToRole="Order" />
+          <NavigationProperty Name="Tiker" Relationship="Self.FK_Deal_Tiker" FromRole="Deal" ToRole="Tiker" />
+        </EntityType>
+        <EntityType Name="DealKind">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DealKind1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Deals" Relationship="Self.FK_Deal_DealKind" FromRole="DealKind" ToRole="Deal" />
+        </EntityType>
+        <EntityType Name="DealPlace">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DealPlace1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Deals" Relationship="Self.FK_Deal_DealPlace" FromRole="DealPlace" ToRole="Deal" />
+        </EntityType>
+        <EntityType Name="DealType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DealType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Deals" Relationship="Self.FK_Deal_DealType" FromRole="DealType" ToRole="Deal" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Deals" Relationship="Self.FK_Deal_Employee" FromRole="Employee" ToRole="Deal" />
+        </EntityType>
+        <EntityType Name="Operation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DealID" Type="Int32" />
+          <Property Name="SubAccountID" Type="Int32" />
+          <Property Name="Number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="OperationDate" Type="DateTime" Precision="0" />
+          <Property Name="OperationType" Type="Int32" />
+          <Property Name="OperationSum" Type="Int32" />
+          <Property Name="SaldoInput" Type="Int32" />
+          <Property Name="SaldoOutput" Type="Int32" />
+          <NavigationProperty Name="SubAccount" Relationship="Self.FK_Operation_SubAccount" FromRole="Operation" ToRole="SubAccount" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Order1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Deals" Relationship="Self.FK_Deal_Order" FromRole="Order" ToRole="Deal" />
+        </EntityType>
+        <EntityType Name="SubAccount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountPlanID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AccountPlan" Relationship="Self.FK_SubAccount_AccountPlan" FromRole="SubAccount" ToRole="AccountPlan" />
+          <NavigationProperty Name="Operations" Relationship="Self.FK_Operation_SubAccount" FromRole="SubAccount" ToRole="Operation" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tiker">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tiker1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Deals" Relationship="Self.FK_Deal_Tiker" FromRole="Tiker" ToRole="Deal" />
+        </EntityType>
+        <Association Name="FK_SubAccount_AccountPlan">
+          <End Role="AccountPlan" Type="Self.AccountPlan" Multiplicity="0..1" />
+          <End Role="SubAccount" Type="Self.SubAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountPlan">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubAccount">
+              <PropertyRef Name="AccountPlanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_Agreement">
+          <End Role="Agreement" Type="Self.Agreement" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agreement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="AgrementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="CalculationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_Currency1">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="PaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_DealKind">
+          <End Role="DealKind" Type="Self.DealKind" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DealKind">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="DealKindID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_DealPlace">
+          <End Role="DealPlace" Type="Self.DealPlace" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DealPlace">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="DealPlaceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_DealType">
+          <End Role="DealType" Type="Self.DealType" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DealType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="DealTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_Tiker">
+          <End Role="Tiker" Type="Self.Tiker" Multiplicity="0..1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tiker">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="TikerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operation_SubAccount">
+          <End Role="SubAccount" Type="Self.SubAccount" Multiplicity="0..1" />
+          <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubAccount">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Operation">
+              <PropertyRef Name="SubAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_SecuritesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountPlans" EntityType="Self.AccountPlan" />
+          <EntitySet Name="Agreements" EntityType="Self.Agreement" />
+          <EntitySet Name="Currencies" EntityType="Self.Currency" />
+          <EntitySet Name="Deals" EntityType="Self.Deal" />
+          <EntitySet Name="DealKinds" EntityType="Self.DealKind" />
+          <EntitySet Name="DealPlaces" EntityType="Self.DealPlace" />
+          <EntitySet Name="DealTypes" EntityType="Self.DealType" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Operations" EntityType="Self.Operation" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="SubAccounts" EntityType="Self.SubAccount" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tikers" EntityType="Self.Tiker" />
+          <AssociationSet Name="FK_SubAccount_AccountPlan" Association="Self.FK_SubAccount_AccountPlan">
+            <End Role="AccountPlan" EntitySet="AccountPlans" />
+            <End Role="SubAccount" EntitySet="SubAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_Agreement" Association="Self.FK_Deal_Agreement">
+            <End Role="Agreement" EntitySet="Agreements" />
+            <End Role="Deal" EntitySet="Deals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_Currency" Association="Self.FK_Deal_Currency">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Deal" EntitySet="Deals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_Currency1" Association="Self.FK_Deal_Currency1">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Deal" EntitySet="Deals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_DealKind" Association="Self.FK_Deal_DealKind">
+            <End Role="DealKind" EntitySet="DealKinds" />
+            <End Role="Deal" EntitySet="Deals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_DealPlace" Association="Self.FK_Deal_DealPlace">
+            <End Role="DealPlace" EntitySet="DealPlaces" />
+            <End Role="Deal" EntitySet="Deals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_DealType" Association="Self.FK_Deal_DealType">
+            <End Role="DealType" EntitySet="DealTypes" />
+            <End Role="Deal" EntitySet="Deals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_Employee" Association="Self.FK_Deal_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Deal" EntitySet="Deals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_Order" Association="Self.FK_Deal_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Deal" EntitySet="Deals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_Tiker" Association="Self.FK_Deal_Tiker">
+            <End Role="Tiker" EntitySet="Tikers" />
+            <End Role="Deal" EntitySet="Deals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operation_SubAccount" Association="Self.FK_Operation_SubAccount">
+            <End Role="SubAccount" EntitySet="SubAccounts" />
+            <End Role="Operation" EntitySet="Operations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BD_SecuritesModelContainer" CdmEntityContainer="BD_SecuritesEntities">
+          <EntitySetMapping Name="AccountPlans">
+            <EntityTypeMapping TypeName="BD_SecuritesModel.AccountPlan">
+              <MappingFragment StoreEntitySet="AccountPlan">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="AccountVerify" ColumnName="AccountVerify" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agreements">
+            <EntityTypeMapping TypeName="BD_SecuritesModel.Agreement">
+              <MappingFragment StoreEntitySet="Agreement">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Agreement1" ColumnName="Agreement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="BD_SecuritesModel.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Calculation" ColumnName="Calculation" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deals">
+            <EntityTypeMapping TypeName="BD_SecuritesModel.Deal">
+              <MappingFragment StoreEntitySet="Deal">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AgrementID" ColumnName="AgrementID" />
+                <ScalarProperty Name="DealTypeID" ColumnName="DealTypeID" />
+                <ScalarProperty Name="DealKindID" ColumnName="DealKindID" />
+                <ScalarProperty Name="DealPlaceID" ColumnName="DealPlaceID" />
+                <ScalarProperty Name="CalculationID" ColumnName="CalculationID" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="TikerID" ColumnName="TikerID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="Constractor" ColumnName="Constractor" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="DealDate" ColumnName="DealDate" />
+                <ScalarProperty Name="Quanity" ColumnName="Quanity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="Trader" ColumnName="Trader" />
+                <ScalarProperty Name="CommisionExchange" ColumnName="CommisionExchange" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DealKinds">
+            <EntityTypeMapping TypeName="BD_SecuritesModel.DealKind">
+              <MappingFragment StoreEntitySet="DealKind">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DealKind1" ColumnName="DealKind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DealPlaces">
+            <EntityTypeMapping TypeName="BD_SecuritesModel.DealPlace">
+              <MappingFragment StoreEntitySet="DealPlace">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DealPlace1" ColumnName="DealPlace" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DealTypes">
+            <EntityTypeMapping TypeName="BD_SecuritesModel.DealType">
+              <MappingFragment StoreEntitySet="DealType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DealType1" ColumnName="DealType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="BD_SecuritesModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Employee1" ColumnName="Employee" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operations">
+            <EntityTypeMapping TypeName="BD_SecuritesModel.Operation">
+              <MappingFragment StoreEntitySet="Operation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DealID" ColumnName="DealID" />
+                <ScalarProperty Name="SubAccountID" ColumnName="SubAccountID" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="OperationDate" ColumnName="OperationDate" />
+                <ScalarProperty Name="OperationType" ColumnName="OperationType" />
+                <ScalarProperty Name="OperationSum" ColumnName="OperationSum" />
+                <ScalarProperty Name="SaldoInput" ColumnName="SaldoInput" />
+                <ScalarProperty Name="SaldoOutput" ColumnName="SaldoOutput" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="BD_SecuritesModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Order1" ColumnName="Order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubAccounts">
+            <EntityTypeMapping TypeName="BD_SecuritesModel.SubAccount">
+              <MappingFragment StoreEntitySet="SubAccount">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AccountPlanID" ColumnName="AccountPlanID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BD_SecuritesModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tikers">
+            <EntityTypeMapping TypeName="BD_SecuritesModel.Tiker">
+              <MappingFragment StoreEntitySet="Tiker">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tiker1" ColumnName="Tiker" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

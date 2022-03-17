@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b483f244d75948a3a6f91ed2f79aefa9" Name="Diagram1">
+        <EntityTypeShape EntityType="BD_SecuritesModel.AccountPlan" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SecuritesModel.Agreement" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SecuritesModel.Currency" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SecuritesModel.Deal" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SecuritesModel.DealKind" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SecuritesModel.DealPlace" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SecuritesModel.DealType" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SecuritesModel.Employee" Width="1.5" PointX="0.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SecuritesModel.Operation" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SecuritesModel.Order" Width="1.5" PointX="0.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SecuritesModel.SubAccount" Width="1.5" PointX="8" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SecuritesModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_SecuritesModel.Tiker" Width="1.5" PointX="0.75" PointY="21.375" IsExpanded="true" />
+        <AssociationConnector Association="BD_SecuritesModel.FK_SubAccount_AccountPlan" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SecuritesModel.FK_Deal_Agreement" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SecuritesModel.FK_Deal_Currency" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SecuritesModel.FK_Deal_Currency1" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SecuritesModel.FK_Deal_DealKind" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SecuritesModel.FK_Deal_DealPlace" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SecuritesModel.FK_Deal_DealType" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SecuritesModel.FK_Deal_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SecuritesModel.FK_Deal_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SecuritesModel.FK_Deal_Tiker" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_SecuritesModel.FK_Operation_SubAccount" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
